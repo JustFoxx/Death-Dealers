@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "death",
+  "version": "${version}",
+
+  "name": "Death Dealers",
+  "description": "Origin addon",
+  "authors": [
+    "JustFoxx"
+  ],
+  "contact": {
+    "homepage": "https://github.com/JustFoxx/Death-Dealers",
+    "sources": "https://github.com/JustFoxx/Death-Dealers"
+  },
+
+  "license": "LGPL-3.0",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.justfoxx.death.Main"
+    ],
+    "preLaunch": [
+      "io.github.justfoxx.death.PreMain"
+    ]
+  },
+  "mixins": [
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric": "*",
+    "minecraft": "~1.19",
+    "java": ">=17",
+    "origins": "*",
+    "pehkui": ">=3.3.3"
+  },
+  "suggests": {
+    "nochatreports": "*"
+  }
+}
