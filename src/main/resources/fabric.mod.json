@@ -25,6 +25,7 @@
     ]
   },
   "mixins": [
+    "death.mixins.json"
   ],
 
   "depends": {
