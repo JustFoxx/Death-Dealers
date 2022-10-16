@@ -2,7 +2,6 @@ package io.github.justfoxx.death.powers;
 
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerTypeReference;
-import io.github.justfoxx.death.Powers;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 

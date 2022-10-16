@@ -22,6 +22,9 @@
     ],
     "preLaunch": [
       "io.github.justfoxx.death.PreMain"
+    ],
+    "fabric-datagen": [
+      "io.github.justfoxx.death.datagen.Generate"
     ]
   },
   "mixins": [
