@@ -47,51 +47,48 @@ public class Armour extends BasePower {
         return itemStack;
     }
 
+    private final ItemStack bootsStack = defaultItem(new ItemStack(this.boots), "Boots");
+    private final ItemStack leggingsStack = defaultItem(new ItemStack(this.leggings), "Leggings");
+    private final ItemStack chestplateStack = defaultItem(new ItemStack(this.chestplate), "Chestplate");
+    private final ItemStack helmetStack = defaultItem(new ItemStack(this.helmet), "Helmet");
+
     private void equipBoots(LivingEntity entity) {
-        ItemStack itemStack = defaultItem(new ItemStack(this.boots), "Boots");
-        if (entity.getEquippedStack(EquipmentSlot.FEET).isItemEqual(itemStack)) return;
-        entity.equipStack(EquipmentSlot.FEET, itemStack);
+        if (entity.getEquippedStack(EquipmentSlot.FEET).isItemEqual(bootsStack)) return;
+        entity.equipStack(EquipmentSlot.FEET, bootsStack);
     }
 
     private void equipLeggings(LivingEntity entity) {
-        ItemStack itemStack = defaultItem(new ItemStack(this.leggings), "Leggings");
-        if (entity.getEquippedStack(EquipmentSlot.LEGS).isItemEqual(itemStack)) return;
-        entity.equipStack(EquipmentSlot.LEGS, itemStack);
+        if (entity.getEquippedStack(EquipmentSlot.LEGS).isItemEqual(leggingsStack)) return;
+        entity.equipStack(EquipmentSlot.LEGS, leggingsStack);
     }
 
     private void equipChestplate(LivingEntity entity) {
-        ItemStack itemStack = defaultItem(new ItemStack(this.chestplate), "Chestplate");
-        if (entity.getEquippedStack(EquipmentSlot.CHEST).isItemEqual(itemStack)) return;
-        entity.equipStack(EquipmentSlot.CHEST, itemStack);
+        if (entity.getEquippedStack(EquipmentSlot.CHEST).isItemEqual(chestplateStack)) return;
+        entity.equipStack(EquipmentSlot.CHEST, chestplateStack);
     }
 
     private void equipHelmet(LivingEntity entity) {
-        ItemStack itemStack = defaultItem(new ItemStack(this.helmet), "Helmet");
-        if (entity.getEquippedStack(EquipmentSlot.HEAD).isItemEqual(itemStack)) return;
-        entity.equipStack(EquipmentSlot.HEAD, itemStack);
+        if (entity.getEquippedStack(EquipmentSlot.HEAD).isItemEqual(helmetStack)) return;
+        entity.equipStack(EquipmentSlot.HEAD, helmetStack);
     }
 
     private void unequipBoots(LivingEntity entity) {
-        ItemStack itemStack = defaultItem(new ItemStack(this.boots), "Boots");
-        if (!entity.getEquippedStack(EquipmentSlot.FEET).isItemEqual(itemStack)) return;
+        if (!entity.getEquippedStack(EquipmentSlot.FEET).isItemEqual(bootsStack)) return;
         entity.equipStack(EquipmentSlot.FEET, ItemStack.EMPTY);
     }
 
     private void unequipLeggings(LivingEntity entity) {
-        ItemStack itemStack = defaultItem(new ItemStack(this.leggings), "Leggings");
-        if (!entity.getEquippedStack(EquipmentSlot.LEGS).isItemEqual(itemStack)) return;
+        if (!entity.getEquippedStack(EquipmentSlot.LEGS).isItemEqual(leggingsStack)) return;
         entity.equipStack(EquipmentSlot.LEGS, ItemStack.EMPTY);
     }
 
     private void unequipChestplate(LivingEntity entity) {
-        ItemStack itemStack = defaultItem(new ItemStack(this.chestplate), "Chestplate");
-        if (!entity.getEquippedStack(EquipmentSlot.CHEST).isItemEqual(itemStack)) return;
+        if (!entity.getEquippedStack(EquipmentSlot.CHEST).isItemEqual(chestplateStack)) return;
         entity.equipStack(EquipmentSlot.CHEST, ItemStack.EMPTY);
     }
 
     private void unequipHelmet(LivingEntity entity) {
-        ItemStack itemStack = defaultItem(new ItemStack(this.helmet), "Helmet");
-        if (!entity.getEquippedStack(EquipmentSlot.HEAD).isItemEqual(itemStack)) return;
+        if (!entity.getEquippedStack(EquipmentSlot.HEAD).isItemEqual(helmetStack)) return;
         entity.equipStack(EquipmentSlot.HEAD, ItemStack.EMPTY);
     }
 

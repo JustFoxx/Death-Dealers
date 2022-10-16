@@ -57,10 +57,12 @@ public class Around extends BasePower {
         }
     }
 
+    private Random rnd = new Random();
+
     @Override
     public void onTick(LivingEntity entity) {
         if(!isActive(entity)) return;
-        int random = new Random().nextInt(1000);
+        int random = rnd.nextInt(1000);
         if (!(
                 entity.isAlive()
                 && random < this.ambientChance++

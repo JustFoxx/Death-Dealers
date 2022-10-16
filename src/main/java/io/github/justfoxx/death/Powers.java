@@ -10,15 +10,15 @@ import java.util.List;
 public class Powers {
     private static final List<BasePower> powers = new ArrayList<>();
 
-    public static BasePower ARMOUR = register(new Armour(Global.id("armour")));
-
-    public static BasePower AROUND = register(new Around(Global.id("around")));
+    public static void init() {
+        register(new Armour(Global.id("armour")));
+        register(new Around(Global.id("around")));
+    }
 
     public static List<BasePower> getPowers() {
         return powers;
     }
-    public static BasePower register(BasePower power) {
+    public static void register(BasePower power) {
         powers.add(power);
-        return power;
     }
 }
