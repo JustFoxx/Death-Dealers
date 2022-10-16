@@ -29,10 +29,6 @@ public class Armour extends BasePower {
 
     private final int color = 0x000000;
 
-    public Armour(Identifier id) {
-        super(id);
-    }
-
     private ItemStack defaultItem(ItemStack itemStack, String name) {
         itemStack.getOrCreateSubNbt("display").putInt("color", this.color);
         itemStack.getOrCreateNbt().putInt("HideFlags", 101);

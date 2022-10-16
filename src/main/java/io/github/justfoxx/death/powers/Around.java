@@ -12,9 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import java.util.Random;
 
 public class Around extends BasePower {
-    public Around(Identifier id) {
-        super(id);
-    }
     private final int radius = 3;
     private int ambientChance;
     private void resetAmbientDelay() {
