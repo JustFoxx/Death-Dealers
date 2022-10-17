@@ -4,9 +4,11 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.justfoxx.death.Global;
 import io.github.justfoxx.death.Powers;
 import io.github.justfoxx.death.powers.HoeDamage;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -19,11 +21,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import javax.annotation.CheckReturnValue;
 
 @Mixin(LivingEntity.class)
-public class LivingEntityMixin {
+public abstract class LivingEntityMixin {
+
+    @Shadow protected abstract void drop(DamageSource source);
 
     @Inject(at = @At("RETURN"), method = "tick")
     public void tick(CallbackInfo info) {
-        Powers.getPowers().forEach(power -> power.onTick((LivingEntity) (Object) this));
+        LivingEntity entity = (LivingEntity) (Object) this;
+        if(entity.getWorld() instanceof ServerWorld) {
+            Powers.getPowers().forEach(power -> power.onTick(entity));
+        }
     }
 
     @ModifyVariable(at = @At("HEAD"), method = "damage", argsOnly = true)
@@ -42,5 +49,19 @@ public class LivingEntityMixin {
             }
         }
         return originalValue;
+    }
+
+    @Inject(at = @At("RETURN"), method = "damage", cancellable = true)
+    public void canDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if(amount == 0) cir.setReturnValue(false);
+    }
+
+    @Inject(at = @At("HEAD"), method = "onDeath", cancellable = true)
+    public void onDeath(DamageSource damageSource, CallbackInfo ci) {
+        if(Powers.death.isActive((LivingEntity) (Object) this)) {
+            Powers.death.death(damageSource,(LivingEntity) (Object) this);
+            this.drop(damageSource);
+            ci.cancel();
+        }
     }
 }

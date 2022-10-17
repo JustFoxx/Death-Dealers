@@ -1,9 +1,6 @@
 package io.github.justfoxx.death;
 
-import io.github.justfoxx.death.powers.Armour;
-import io.github.justfoxx.death.powers.Around;
-import io.github.justfoxx.death.powers.BasePower;
-import io.github.justfoxx.death.powers.HoeDamage;
+import io.github.justfoxx.death.powers.*;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
@@ -15,10 +12,12 @@ public class Powers {
     public static final BasePower armour = new Armour();
     public static final BasePower around = new Around();
     public static final HoeDamage hoeDamage = new HoeDamage();
+    public static final Death death = new Death();
     public static void init() {
         register(armour,Global.id("armour"));
         register(around,Global.id("around"));
         register(hoeDamage,Global.id("hoedamage"));
+        register(death,Global.id("death"));
     }
 
     public static List<BasePower> getPowers() {
