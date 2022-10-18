@@ -19,8 +19,7 @@ import net.minecraft.world.World;
 public class Death extends BasePower{
     public void death(DamageSource source, LivingEntity entity) {
         if(entity.getServer() == null) return;
-        ((IEntityDataSaver) entity).getPersistentData().putBoolean("dead", true);
-        ((IEntityDataSaver) entity).getPersistentData().putInt("ticks", 0);
+
         LivingEntity attacker=null;
         if(source.getAttacker() instanceof LivingEntity livingEntity) {
             attacker = livingEntity;
@@ -40,11 +39,14 @@ public class Death extends BasePower{
             playerEntity.setAbsorptionAmount(20);
             playerEntity.changeGameMode(GameMode.SPECTATOR);
         }
+        ((IEntityDataSaver) entity).getPersistentData().putBoolean("dead", true);
+        ((IEntityDataSaver) entity).getPersistentData().putInt("ticks", 0);
     }
     @Override
     public void onTick(LivingEntity entity) {
+        if(!isActive(entity)) return;
         boolean dead = ((IEntityDataSaver) entity).getPersistentData().getBoolean("dead");
-        if(!(isActive(entity) && dead)) return;
+        if(!dead) return;
         int ticks = ((IEntityDataSaver) entity).getPersistentData().getInt("ticks");
         if(ticks <= 360000) {
             ((ServerWorld)entity.getWorld()).spawnParticles(ParticleTypes.ASH, entity.getX(), entity.getY()+1, entity.getZ(), 100,1,1,1, 0.1);
