@@ -63,5 +63,9 @@ public abstract class LivingEntityMixin {
             this.drop(damageSource);
             ci.cancel();
         }
+        Global.logger.info("onDeath 0");
+        LivingEntity victim = (LivingEntity) (Object) this;
+        if(!(damageSource.getAttacker() instanceof LivingEntity attacker)) return;
+        Powers.source.kill(attacker,victim);
     }
 }

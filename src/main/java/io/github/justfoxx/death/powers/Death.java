@@ -3,6 +3,7 @@ package io.github.justfoxx.death.powers;
 import io.github.justfoxx.death.Global;
 import io.github.justfoxx.death.IEntityDataSaver;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -15,10 +16,13 @@ import net.minecraft.util.Formatting;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
+import org.apache.logging.log4j.util.Strings;
 
 public class Death extends BasePower{
     public void death(DamageSource source, LivingEntity entity) {
         if(entity.getServer() == null) return;
+        entity.getServer().getPlayerManager().broadcast(Text.literal("%s returned to hell".formatted(entity.getEntityName())).formatted(Formatting.DARK_RED, Formatting.BOLD), false);
+
 
         LivingEntity attacker=null;
         if(source.getAttacker() instanceof LivingEntity livingEntity) {
@@ -36,7 +40,6 @@ public class Death extends BasePower{
         world.spawnParticles(ParticleTypes.SMOKE, entity.getX(), entity.getY()+1, entity.getZ(), 100,1,1,1, 0.1);
         FabricDimensions.teleport(entity,entity.getServer().getWorld(World.NETHER), new TeleportTarget(entity.getPos(), entity.getVelocity(), entity.getYaw(), entity.getPitch()));
         if(entity instanceof ServerPlayerEntity playerEntity) {
-            playerEntity.setAbsorptionAmount(20);
             playerEntity.changeGameMode(GameMode.SPECTATOR);
         }
         ((IEntityDataSaver) entity).getPersistentData().putBoolean("dead", true);
