@@ -1,6 +1,5 @@
 package io.github.justfoxx.death;
 
-import io.github.apace100.apoli.command.ResourceCommand;
 import io.github.justfoxx.death.powers.*;
 import net.minecraft.util.Identifier;
 
@@ -15,12 +14,14 @@ public class Powers {
     public static final HoeDamage hoeDamage = new HoeDamage();
     public static final Death death = new Death();
     public static final Source source = new Source();
+    public static final Damage damage = new Damage();
     public static void init() {
         register(armour,Global.id("armour"));
         register(around,Global.id("around"));
         register(hoeDamage,Global.id("hoedamage"));
         register(death,Global.id("death"));
         register(source,Global.id("source"));
+        register(damage,Global.id("damage"));
     }
 
     public static List<BasePower> getPowers() {

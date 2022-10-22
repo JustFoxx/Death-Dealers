@@ -1,9 +1,7 @@
 package io.github.justfoxx.death.powers;
 
-import io.github.justfoxx.death.Global;
 import io.github.justfoxx.death.IEntityDataSaver;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -12,15 +10,12 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
-import org.apache.commons.lang3.time.DateUtils;
-import org.apache.logging.log4j.util.Strings;
 
 public class Death extends BasePower{
     private final StatusEffectInstance statusEffectInstance = new StatusEffectInstance(StatusEffects.DARKNESS, 10, 1, true, false);

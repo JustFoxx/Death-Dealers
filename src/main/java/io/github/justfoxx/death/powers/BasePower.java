@@ -25,7 +25,7 @@ public abstract class BasePower {
         return powerTypeReference.isActive(livingEntity);
     }
 
-    public void onTick(LivingEntity entity){};
+    public void onTick(LivingEntity entity){}
 
     public PowerHolderComponent getPowerHolder(LivingEntity entity) {
         if (powerHolderComponent == null) {

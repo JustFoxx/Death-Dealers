@@ -2,7 +2,6 @@ package io.github.justfoxx.death.mixins;
 
 import com.mojang.authlib.GameProfile;
 import io.github.justfoxx.death.Powers;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.encryption.PlayerPublicKey;

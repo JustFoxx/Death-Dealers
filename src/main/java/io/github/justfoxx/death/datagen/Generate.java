@@ -1,12 +1,10 @@
 package io.github.justfoxx.death.datagen;
 
 import io.github.justfoxx.death.data.BlockTags;
-import io.github.justfoxx.death.data.ItemTags;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 
 public class Generate implements DataGeneratorEntrypoint {

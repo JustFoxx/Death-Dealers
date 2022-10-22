@@ -11,7 +11,6 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
 
 public class Armour extends BasePower {
     private final DyeableArmorItem boots = (DyeableArmorItem) Items.LEATHER_BOOTS;

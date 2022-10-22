@@ -1,15 +1,12 @@
 package io.github.justfoxx.death.mixins;
 
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.justfoxx.death.Global;
 import io.github.justfoxx.death.Powers;
 import io.github.justfoxx.death.powers.HoeDamage;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.server.world.ServerWorld;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,8 +14,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import javax.annotation.CheckReturnValue;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
@@ -53,6 +48,13 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("RETURN"), method = "damage", cancellable = true)
     public void canDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if(Powers.damage.isActive((LivingEntity) (Object) this)) {
+            Global.logger.info(String.valueOf(Powers.damage.damage(source)));
+            if(!Powers.damage.damage(source)) {
+                cir.setReturnValue(false);
+                cir.cancel();
+            }
+        }
         if(amount == 0 && source.getAttacker() instanceof LivingEntity attacker && Powers.hoeDamage.isActive(attacker)) {
             cir.setReturnValue(false);
             cir.cancel();

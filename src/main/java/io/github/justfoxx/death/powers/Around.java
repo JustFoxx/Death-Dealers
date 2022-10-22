@@ -6,7 +6,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.Random;
@@ -54,7 +53,7 @@ public class Around extends BasePower {
         }
     }
 
-    private Random rnd = new Random();
+    private final Random rnd = new Random();
 
     @Override
     public void onTick(LivingEntity entity) {
