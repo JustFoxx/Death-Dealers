@@ -55,6 +55,9 @@ public class Death extends BasePower{
             ((ServerWorld)entity.getWorld()).spawnParticles(ParticleTypes.ASH, entity.getX(), entity.getY()+1, entity.getZ(), 100,1,1,1, 0.1);
             ((IEntityDataSaver) entity).getPersistentData().putInt("ticks", ticks+1);
             Global.logger.info(String.valueOf(ticks));
+            if(ticks % 20 == 0 && entity instanceof ServerPlayerEntity playerEntity) {
+                playerEntity.sendMessageToClient(Text.literal("You will be respawned in %s seconds".formatted((360000-ticks)/20)).formatted(Formatting.DARK_RED, Formatting.BOLD), true);
+            }
             return;
         }
         ((IEntityDataSaver) entity).getPersistentData().putBoolean("dead", false);

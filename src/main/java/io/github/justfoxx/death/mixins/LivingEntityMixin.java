@@ -53,7 +53,10 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("RETURN"), method = "damage", cancellable = true)
     public void canDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if(amount == 0) cir.setReturnValue(false);
+        if(amount == 0 && source.getAttacker() instanceof LivingEntity attacker && Powers.hoeDamage.isActive(attacker)) {
+            cir.setReturnValue(false);
+            cir.cancel();
+        }
     }
 
     @Inject(at = @At("HEAD"), method = "onDeath", cancellable = true)

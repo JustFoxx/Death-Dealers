@@ -34,20 +34,8 @@ public class Generate implements DataGeneratorEntrypoint {
         }
     }
 
-    private static class UsedItems extends FabricTagProvider<Item> {
-        public UsedItems(FabricDataGenerator dataGenerator) {
-            super(dataGenerator, Registry.ITEM);
-        }
-
-        @Override
-        protected void generateTags() {
-            FabricTagBuilder<Item> hoesTagBuilder = getOrCreateTagBuilder(ItemTags.HOES);
-            ItemTags.hoes.forEach(hoesTagBuilder::add);
-        }
-    }
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         fabricDataGenerator.addProvider(DieBlocks::new);
-        fabricDataGenerator.addProvider(UsedItems::new);
     }
 }
