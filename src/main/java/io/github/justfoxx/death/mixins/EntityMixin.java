@@ -30,8 +30,8 @@ public abstract class EntityMixin implements IEntityDataSaver {
 
     @Inject(method = "readNbt", at = @At("HEAD"))
     protected void injectReadMethod(NbtCompound nbt, CallbackInfo info) {
-        if (nbt.contains("wallwar.oresfall_data", 10)) {
-            persistentData = nbt.getCompound("wallwar.oresfall_data");
+        if (nbt.contains("death.data", 10)) {
+            persistentData = nbt.getCompound("death.data");
         }
     }
 }

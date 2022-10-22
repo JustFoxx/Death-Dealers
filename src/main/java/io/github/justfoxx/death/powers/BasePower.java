@@ -1,14 +1,16 @@
 package io.github.justfoxx.death.powers;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import io.github.apace100.apoli.power.Power;
-import io.github.apace100.apoli.power.PowerType;
-import io.github.apace100.apoli.power.PowerTypeReference;
-import io.github.apace100.apoli.power.PowerTypeRegistry;
+import io.github.apace100.apoli.power.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 
 public abstract class BasePower {
+    protected enum MATH {
+        ADD,
+        REMOVE,
+        SET
+    }
     protected Identifier id;
     protected PowerTypeReference<Power> powerTypeReference;
     protected PowerType<?> powerType;
@@ -39,4 +41,11 @@ public abstract class BasePower {
         return getPowerHolder(entity).getPower(this.powerType);
     }
 
+    protected void modifyResource(VariableIntPower power, int value, MATH math) {
+        switch (math) {
+            case ADD ->power.setValue(power.getValue() + value);
+            case REMOVE ->power.setValue(power.getValue() - value);
+            case SET ->power.setValue(value);
+        }
+    }
 }

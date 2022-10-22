@@ -10,7 +10,7 @@ import net.minecraft.util.Formatting;
 
 public class Damage extends BasePower{
 
-    public boolean onDamage(DamageSource source) {
+    public boolean damage(DamageSource source) {
         if(source.isFire()) return true;
         if(source.isProjectile()) return false;
         if(!(source.getAttacker() instanceof LivingEntity attacker)) return false;

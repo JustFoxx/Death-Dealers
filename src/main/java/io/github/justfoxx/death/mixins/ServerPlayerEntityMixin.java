@@ -24,8 +24,8 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
     @Inject(at = @At("HEAD"), method = "onDeath", cancellable = true)
     public void onDeath(DamageSource damageSource, CallbackInfo ci) {
         if(Powers.death.isActive(this)) {
-            Powers.death.death(damageSource,this);
             this.drop(damageSource);
+            Powers.death.death(damageSource,this);
             ci.cancel();
         }
     }

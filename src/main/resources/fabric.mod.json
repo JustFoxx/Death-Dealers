@@ -37,7 +37,8 @@
     "minecraft": "~1.19",
     "java": ">=17",
     "origins": "*",
-    "pehkui": ">=3.3.3"
+    "pehkui": ">=3.3.3",
+    "nbtcrafting": "*"
   },
   "suggests": {
     "nochatreports": "*"
