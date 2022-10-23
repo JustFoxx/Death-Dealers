@@ -46,30 +46,31 @@ public abstract class LivingEntityMixin {
         return originalValue;
     }
 
-    @Inject(at = @At("RETURN"), method = "damage", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
     public void canDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if(Powers.damage.isActive((LivingEntity) (Object) this)) {
-            Global.logger.info(String.valueOf(Powers.damage.damage(source)));
+        LivingEntity entity = (LivingEntity) (Object) this;
+        if(entity.getWorld().isClient()) return;
+        if(entity.isInvulnerableTo(source)) return;
+        if(entity.isDead()) return;
+        if(Powers.damage.isActive(entity)) {
             if(!Powers.damage.damage(source)) {
                 cir.setReturnValue(false);
-                cir.cancel();
             }
         }
         if(amount == 0 && source.getAttacker() instanceof LivingEntity attacker && Powers.hoeDamage.isActive(attacker)) {
             cir.setReturnValue(false);
-            cir.cancel();
         }
     }
 
     @Inject(at = @At("HEAD"), method = "onDeath", cancellable = true)
     public void onDeath(DamageSource damageSource, CallbackInfo ci) {
-        if(Powers.death.isActive((LivingEntity) (Object) this)) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+        if(Powers.death.isActive(entity)) {
             this.drop(damageSource);
-            Powers.death.death(damageSource,(LivingEntity) (Object) this);
+            Powers.death.death(damageSource,entity);
             ci.cancel();
         }
-        LivingEntity victim = (LivingEntity) (Object) this;
         if(!(damageSource.getAttacker() instanceof LivingEntity attacker)) return;
-        Powers.source.kill(attacker,victim);
+        Powers.source.kill(attacker,entity);
     }
 }

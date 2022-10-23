@@ -1,5 +1,6 @@
 package io.github.justfoxx.death.powers;
 
+import io.github.justfoxx.death.Global;
 import io.github.justfoxx.death.data.ItemTags;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
