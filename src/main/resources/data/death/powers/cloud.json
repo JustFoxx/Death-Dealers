@@ -1,0 +1,38 @@
+{
+    "type":"apoli:active_self",
+    "key": {
+        "key": "key.origins.primary_active"
+    },
+    "condition": {
+        "type":"apoli:resource",
+        "resource": "death:source",
+        "comparison": ">=",
+        "compare_to": 1
+    },
+    "cooldown": 400,
+    "hud_render": {
+        "sprite_location":"origins:textures/gui/community/huang/resource_bar_01.png",
+        "bar_index": 6
+    },
+    "entity_action": {
+        "type":"apoli:and",
+        "actions": [
+            {
+                "type":"apoli:change_resource",
+                "change": -1,
+                "operation": "add",
+                "resource": "death:source"
+            },
+            {
+                "type":"apoli:spawn_effect_cloud",
+                "effect": {
+                    "effect": "wither",
+                    "amplifier": 1,
+                    "duration": 40
+                }
+            }
+        ]
+    },
+    "name": "Withering cloud",
+    "description": " Using your death source you can spawn clouds, if any type of mob will go inside it, it will get wither effect."
+}
