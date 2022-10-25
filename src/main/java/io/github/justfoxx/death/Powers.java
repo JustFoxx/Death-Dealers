@@ -15,6 +15,7 @@ public class Powers {
     public static final Death death = new Death();
     public static final Source source = new Source();
     public static final Damage damage = new Damage();
+    public static final BasePower scary = new PowerPlaceholder();
     public static void init() {
         register(armour,Global.id("armour"));
         register(around,Global.id("around"));
@@ -22,6 +23,7 @@ public class Powers {
         register(death,Global.id("death"));
         register(source,Global.id("source"));
         register(damage,Global.id("damage"));
+        register(scary,Global.id("scary"));
     }
 
     public static List<BasePower> getPowers() {

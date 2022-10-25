@@ -38,6 +38,7 @@ public class Death extends BasePower{
         world.spawnParticles(ParticleTypes.SMOKE, entity.getX(), entity.getY()+1, entity.getZ(), 100,1,1,1, 0.1);
         FabricDimensions.teleport(entity,server.getWorld(World.NETHER), new TeleportTarget(entity.getPos(), entity.getVelocity(), entity.getYaw(), entity.getPitch()));
         if(entity instanceof ServerPlayerEntity playerEntity) {
+            playerEntity.setAbsorptionAmount(20);
             playerEntity.changeGameMode(GameMode.SPECTATOR);
             server.getPlayerManager().broadcast(Text.literal("%s returned to hell".formatted(entity.getEntityName())).formatted(Formatting.DARK_RED, Formatting.BOLD), false);
         }
@@ -60,7 +61,7 @@ public class Death extends BasePower{
             int secondsLeft = (leftTime/20)%60;
             int minutesLeft = (leftTime/20/60)%60;
             if(entity instanceof ServerPlayerEntity playerEntity) {
-                playerEntity.sendMessageToClient(Text.literal("You will be respawned in %01d:%02d:%02d minutes".formatted(minutesLeft,secondsLeft,ticksLeft)).formatted(Formatting.DARK_RED, Formatting.BOLD), true);
+                playerEntity.sendMessageToClient(Text.literal("You will be respawned in %01d:%02d:%02d".formatted(minutesLeft,secondsLeft,ticksLeft)).formatted(Formatting.DARK_RED, Formatting.BOLD), true);
             }
             return;
         }
