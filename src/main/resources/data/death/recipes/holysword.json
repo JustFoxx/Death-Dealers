@@ -1,0 +1,17 @@
+{
+  "type": "nbtcrafting:anvil",
+  "base": {
+    "tag": "c:swords"
+  },
+  "ingredient": {
+    "item": "minecraft:conduit"
+  },
+  "result" : {
+    "$": "$",
+    "data": {
+      "display": {
+        "Name": [{"text":"Holy Sword","color":"aqua","bold":true}]
+      }
+    }
+  }
+}

@@ -118,13 +118,12 @@ public class FromDeath extends BasePower{
 
     private static class Chance {
         private int chanceNow;
-        private int chanceNext;
         private final int rndInt;
         public Chance(int rndInt) {
             this.rndInt = rndInt;
         }
         public boolean chanceNext(int chance) {
-            chanceNext = chanceNow + chance;
+            int chanceNext = chanceNow + chance;
             if(rndInt >= chanceNow && rndInt <= chanceNext) {
                 chanceNow = chanceNext;
                 return true;
