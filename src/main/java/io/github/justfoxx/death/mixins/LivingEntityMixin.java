@@ -2,11 +2,15 @@ package io.github.justfoxx.death.mixins;
 
 import io.github.justfoxx.death.Global;
 import io.github.justfoxx.death.Powers;
+import io.github.justfoxx.death.data.ItemTags;
 import io.github.justfoxx.death.powers.HoeDamage;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -72,5 +76,21 @@ public abstract class LivingEntityMixin {
         }
         if(!(damageSource.getAttacker() instanceof LivingEntity attacker)) return;
         Powers.source.kill(attacker,entity);
+    }
+
+    @Inject(at = @At("HEAD"), method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z", cancellable = true)
+    public void addStatusEffect(CallbackInfoReturnable<Boolean> cir) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+        if(Powers.statusEffect.isActive(entity)) {
+            cir.setReturnValue(false);
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "eatFood", cancellable = true)
+    public void eatFood(World world, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+        if(Powers.statusEffect.isActive(entity) && !stack.isIn(ItemTags.ROTTEN_FOOD)) {
+            cir.setReturnValue(ItemStack.EMPTY);
+        }
     }
 }

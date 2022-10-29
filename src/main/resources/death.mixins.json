@@ -6,8 +6,10 @@
   "mixins": [
     "ActiveTargetGoalMixin",
     "EntityMixin",
+    "ItemMixin",
     "LivingEntityMixin",
     "MobEntityMixin",
+    "PlayerEntityMixin",
     "ServerPlayerEntityMixin"
   ],
   "injectors": {

@@ -82,9 +82,9 @@ dependencies {
 	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 	modImplementation "de.siphalor:nbtcrafting-1.19:${project.nbtcrafting_version}"
 	implementation("com.github.LlamaLad7:MixinExtras:${mixinextras_version}")
-	modImplementation("com.github.virtuoel:pehkui:${pehkui_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
+//	modImplementation("com.github.virtuoel:pehkui:${pehkui_version}") {
+//		exclude(group: "net.fabricmc.fabric-api")
+//	}
 	annotationProcessor("com.github.LlamaLad7:MixinExtras:${mixinextras_version}")
 	include("com.github.LlamaLad7:MixinExtras:${mixinextras_version}")
 	//modLocalRuntime files(fileTree(include: ['*.jar'], dir: 'mods'))

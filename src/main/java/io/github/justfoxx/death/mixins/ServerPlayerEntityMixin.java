@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import io.github.justfoxx.death.Powers;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.encryption.PlayerPublicKey;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
@@ -28,4 +29,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
             ci.cancel();
         }
     }
+
+
 }

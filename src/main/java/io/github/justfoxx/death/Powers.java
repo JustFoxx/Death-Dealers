@@ -1,6 +1,7 @@
 package io.github.justfoxx.death;
 
 import io.github.justfoxx.death.powers.*;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class Powers {
     public static final Source source = new Source();
     public static final Damage damage = new Damage();
     public static final BasePower scary = new PowerPlaceholder();
+    public static final BasePower statusEffect = new PowerPlaceholder();
+
     public static void init() {
         register(armour,Global.id("armour"));
         register(around,Global.id("around"));
@@ -24,6 +27,7 @@ public class Powers {
         register(source,Global.id("source"));
         register(damage,Global.id("damage"));
         register(scary,Global.id("scary"));
+        register(statusEffect,Global.id("statuseffect"));
     }
 
     public static List<BasePower> getPowers() {
