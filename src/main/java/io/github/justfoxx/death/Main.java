@@ -7,6 +7,7 @@ public class Main implements ModInitializer {
     @Override
     public void onInitialize() {
         Powers.init();
+        Events.init();
         Global.logger.info("Loaded mod!");
     }
 }
