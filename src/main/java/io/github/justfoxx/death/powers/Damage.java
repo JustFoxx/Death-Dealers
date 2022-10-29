@@ -8,7 +8,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 public class Damage extends BasePower{
-    private final Text name = Text.literal("Holy Sword").formatted(Formatting.BOLD, Formatting.AQUA);
+    public final Text name = Text.literal("Holy Sword").formatted(Formatting.BOLD, Formatting.AQUA);
     public boolean damage(DamageSource source) {
         if(source.isFire()) return true;
         if(source.isProjectile()) return false;

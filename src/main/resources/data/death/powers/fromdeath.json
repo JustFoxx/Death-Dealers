@@ -1,0 +1,34 @@
+{
+  "type":"apoli:active_self",
+  "key": {
+    "key": "key.origins.secondary_active"
+  },
+  "condition": {
+    "type":"apoli:resource",
+    "resource": "death:source",
+    "comparison": ">=",
+    "compare_to": 1
+  },
+  "cooldown": 400,
+  "hud_render": {
+    "sprite_location":"origins:textures/gui/community/huang/resource_bar_02.png",
+    "bar_index": 4
+  },
+  "entity_action": {
+    "type":"apoli:and",
+    "actions": [
+      {
+        "type":"apoli:change_resource",
+        "change": -1,
+        "operation": "add",
+        "resource": "death:source"
+      },
+      {
+        "type":"apoli:execute_command",
+        "command": "execute as @p at @p run fromdeath"
+      }
+    ]
+  },
+  "name": "From depths of death",
+  "description": "You can summon random undead mob using your death source."
+}
