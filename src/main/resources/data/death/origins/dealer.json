@@ -1,5 +1,17 @@
 {
-  "powers": [],
+  "powers": [
+    "death:armour",
+    "death:around",
+    "death:cloud",
+    "death:damage",
+    "death:death",
+    "death:fromdeath",
+    "death:hoedamage",
+    "death:life",
+    "death:scary",
+    "death:source",
+    "death:statuseffect"
+  ],
   "icon":"minecraft:end_crystal",
   "order": 20,
   "impact": 3,
