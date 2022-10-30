@@ -39,10 +39,10 @@ repositories {
 	maven {
 		url 'https://jitpack.io'
 	}
-	maven {
-		name "Siphalor's Maven"
-		url "https://maven.siphalor.de"
-	}
+		maven {
+			name "Siphalor's Maven"
+			url "https://maven.siphalor.de"
+		}
 }
 
 loom {
@@ -80,7 +80,7 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
-	modImplementation "de.siphalor:nbtcrafting-1.19:${project.nbtcrafting_version}"
+	modImplementation "de.siphalor:nbtcrafting3-1.19:${project.nbtcrafting_version}"
 	implementation("com.github.LlamaLad7:MixinExtras:${mixinextras_version}")
 //	modImplementation("com.github.virtuoel:pehkui:${pehkui_version}") {
 //		exclude(group: "net.fabricmc.fabric-api")
