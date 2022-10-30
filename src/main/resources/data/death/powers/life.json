@@ -1,0 +1,13 @@
+{
+  "type": "origins:resource",
+  "min": 0,
+  "max": 2500,
+  "start_value": 2000,
+  "hud_render": {
+    "should_render": true,
+    "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+    "bar_index": 14
+  },
+  "name": "Deadly life",
+  "description": " You need to kill otherwise you will vanish."
+}

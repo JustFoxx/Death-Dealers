@@ -19,6 +19,7 @@ public class Powers {
     public static final BasePower scary = new PowerPlaceholder();
     public static final BasePower statusEffect = new PowerPlaceholder();
     public static final FromDeath fromDeath = new FromDeath();
+    public static final Life life = new Life();
 
     public static void init() {
         register(armour,Global.id("armour"));
@@ -30,6 +31,7 @@ public class Powers {
         register(scary,Global.id("scary"));
         register(statusEffect,Global.id("statuseffect"));
         register(fromDeath,Global.id("fromdeath"));
+        register(life,Global.id("life"));
     }
 
     public static List<BasePower> getPowers() {

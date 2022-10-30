@@ -68,6 +68,7 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("HEAD"), method = "onDeath", cancellable = true)
     public void onDeath(DamageSource damageSource, CallbackInfo ci) {
+        Powers.life.onKill(damageSource);
         LivingEntity entity = (LivingEntity) (Object) this;
         if(Powers.death.isActive(entity)) {
             this.drop(damageSource);

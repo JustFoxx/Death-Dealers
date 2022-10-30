@@ -1,6 +1,8 @@
 package io.github.justfoxx.death.powers;
 
 import io.github.justfoxx.death.data.BlockTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -32,6 +34,11 @@ public class Around extends BasePower {
                 continue;
             }
             if (blockState.isAir()) {
+                continue;
+            }
+            BlockPos blockPosUp = blockPos.up();
+            BlockState blockStateUp = entity.world.getBlockState(blockPosUp);
+            if(blockStateUp.isAir()) {
                 continue;
             }
             ServerWorld world = (ServerWorld) entity.getWorld();
